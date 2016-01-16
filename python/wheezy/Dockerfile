@@ -49,7 +49,16 @@ RUN set -ex \
 
 RUN apt-get purge -y \
     curl \
-    build-essential \
-    && apt-get -y autoremove \
-    && apt-get -y clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    build-essential && \
+    apt-get clean -y && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y && \
+    rm -rf /usr/share/locale/* \
+            /var/cache/debconf/*-old \
+            /usr/share/doc/* \
+            /var/lib/apt/lists/* \
+            /var/lib/dpkg  \
+            /var/lib/cache \
+            /var/lib/log \
+            /tmp/* \
+            /var/tmp/*
