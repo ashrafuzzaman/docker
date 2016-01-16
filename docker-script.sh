@@ -17,16 +17,22 @@ build() {
 }
 
 push() {
-  echo "Pushing to ECR"
+  echo "Pushing to hub"
   docker push $IMAGE_PATH
   clean
 }
 
+squash() {
+  echo "Squashing image :: $IMAGE_PATH"
+  CONTAINER=$(docker run -d $IMAGE_PATH)
+  docker export $CONTAINER | docker import - $IMAGE_PATH
+}
+
 case "$1" in
-    build | push)
+    build | push | squash)
         $*
         ;;
     *)
-        echo "Usage: $0 build | push"
+        echo "Usage: $0 build | push | squash"
         ;;
 esac
