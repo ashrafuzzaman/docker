@@ -53,11 +53,11 @@ RUN apt-get purge -y \
     apt-get clean -y && \
     apt-get autoclean -y && \
     apt-get autoremove -y && \
-    rm -rf /usr/share/locale/* \
-            /var/cache/debconf/*-old \
+    rm -rf  /var/cache/debconf/*-old \
             /usr/share/doc/* \
             /var/lib/apt/lists/* \
-            /var/lib/dpkg  \
+            /var/lib/dpkg/*-old \
+            /var/lib/dpkg/alternatives \
             /var/lib/cache \
             /var/lib/log \
             /tmp/* \
