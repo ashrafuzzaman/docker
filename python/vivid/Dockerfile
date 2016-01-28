@@ -22,7 +22,7 @@ ENV LANG C.UTF-8
 ENV PYTHON_VERSION 2.7.11
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 7.1.2
+ENV PYTHON_PIP_VERSION 8.0.2
 
 RUN set -ex \
 	&& curl -fSL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz" -o python.tar.xz \
