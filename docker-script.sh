@@ -25,7 +25,7 @@ push() {
 squash() {
   echo "Squashing image :: $IMAGE_PATH"
   CONTAINER=$(docker run -d $IMAGE_PATH)
-  docker export $CONTAINER | docker import - $IMAGE_PATH
+  docker export $CONTAINER | docker import - $IMAGE_PATH-squashed
 }
 
 case "$1" in

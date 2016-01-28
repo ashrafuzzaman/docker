@@ -1,4 +1,4 @@
-FROM ubuntu-debootstrap:vivid
+FROM debian:jessie
 
 # remove several traces of debian python
 RUN apt-get purge -y python.* \
@@ -46,6 +46,7 @@ RUN set -ex \
 
 RUN apt-get purge -y \
     curl && \
+    build-essential \
     apt-get -y clean && \
     apt-get -y autoclean && \
     apt-get -y autoremove
