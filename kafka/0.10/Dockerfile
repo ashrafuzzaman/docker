@@ -12,5 +12,6 @@ RUN wget -q http://apache.mirrors.spacedump.net/kafka/"$KAFKA_VERSION"/kafka_"$S
   rm /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz
 
 RUN export PATH=$KAFKA_HOME/bin:$PATH
-CMD $KAFKA_HOME/bin/kafka-server-start.sh $CONFIG_FILE_PATH
+ADD scripts/start-kafka.sh /usr/bin/start-kafka.sh
+CMD sh /usr/bin/start-kafka.sh
 EXPOSE 9092
