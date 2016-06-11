@@ -1,0 +1,20 @@
+FROM ashrafuzzaman/alpin-jre:8
+
+MAINTAINER A.K.M. Ashrafuzzaman ashrafuzzaman.g2@gmail.com
+
+ENV SCALA_VERSION 2.11
+ENV KAFKA_VERSION 0.10.0.0
+ENV KAFKA_HOME /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION"
+
+RUN apk add --update \
+    wget \
+    bash && \
+  rm -rf /var/cache/apk/* && \
+  wget -q http://apache.mirrors.spacedump.net/kafka/"$KAFKA_VERSION"/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -O /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz && \
+  mkdir /opt && \
+  tar xfz /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -C /opt && \
+  rm /tmp/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz
+
+RUN export PATH=$KAFKA_HOME/bin:$PATH
+CMD $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
+EXPOSE 9092
