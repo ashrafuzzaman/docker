@@ -1,4 +1,4 @@
-FROM ashrafuzzaman/alpin-jre:8
+FROM ashrafuzzaman/jre:8-alpine
 
 MAINTAINER A.K.M. Ashrafuzzaman ashrafuzzaman.g2@gmail.com
 
